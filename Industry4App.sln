@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GanttChart", "GanttChart\GanttChart.csproj", "{E4DEBE5C-C6D4-4B92-9931-65078A2FF6BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphApplication", "GanttChart\GraphApplication.csproj", "{E4DEBE5C-C6D4-4B92-9931-65078A2FF6BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE52DA18-9FDB-487B-B4B1-5D0CD031F4B6}
 	EndGlobalSection
 EndGlobal

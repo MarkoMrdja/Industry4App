@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GanttChart
 {
-    public partial class Stanica3 : Form
+    public partial class Station2 : UserControl
     {
-        public Stanica3()
+        public Station2()
         {
             InitializeComponent();
-        }
-
-        private void Stanica3_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

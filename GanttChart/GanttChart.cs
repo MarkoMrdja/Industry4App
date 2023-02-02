@@ -41,9 +41,9 @@ namespace GanttChart
         private DateTime _mouseOverColumnValue;
         private object _mouseOverRowValue = null;
         private Pen lineColor = Pens.Bisque;
-        private Font rowTextFont = new Font("Arial", 10, FontStyle.Regular);
-        private Font dateTextFont = new Font("Arial", 10, FontStyle.Regular);
-        private Font timeTextFont = new Font("Arial", 10, FontStyle.Regular);
+        private Font rowTextFont = new Font("Arial", 11, FontStyle.Regular);
+        private Font dateTextFont = new Font("Arial", 11, FontStyle.Regular);
+        private Font timeTextFont = new Font("Arial", 11, FontStyle.Regular);
 
         public List<string> ToolTipText
         {
@@ -218,7 +218,7 @@ namespace GanttChart
 
         int barStartTop = 50;
         int barHeight = 12;
-        int barSpace = 5;
+        int barSpace = 8;
         int widthPerItem;
 
         int barsViewable = -1;

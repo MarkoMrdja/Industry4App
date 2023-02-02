@@ -16,7 +16,7 @@ namespace GanttChart
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartMenu());
+            Application.Run(new Form1());
         }
     }
 }
