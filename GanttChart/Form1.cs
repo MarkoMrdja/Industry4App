@@ -232,7 +232,6 @@ namespace GanttChart
                     index1++;
                 }
 
-                //put i puta
                 if(incoming[1].pList.Count == 1)
                 {
                     station11.lblCilindarIzv.Text = incoming[1].pList.Count.ToString() + " put";
@@ -240,6 +239,10 @@ namespace GanttChart
                 else if(incoming[1].pList.Count > 1)
                 {
                     station11.lblCilindarIzv.Text = incoming[1].pList.Count.ToString() + " puta";
+                }
+                else
+                {
+                    station11.lblCilindarIzv.Text = "0 puta";
                 }
 
                 if (incoming[2].pList.Count == 1)
@@ -249,6 +252,10 @@ namespace GanttChart
                 else if (incoming[2].pList.Count > 1)
                 {
                     station11.lblCilindarUvu.Text = incoming[2].pList.Count.ToString() + " puta";
+                }
+                else
+                {
+                    station11.lblCilindarUvu.Text = "0 puta";
                 }
                 
 
@@ -294,19 +301,19 @@ namespace GanttChart
 
                 //cylinder lifespan
                 station11.pbAktuatori.Maximum = 100000;
-                station11.pbAktuatori.Value = incoming[23].pList.Count + incoming[24].pList.Count;
+                station11.pbAktuatori.Value = incoming[7].pList.Count + incoming[8].pList.Count;
 
 
                 //70 l/min nominalni protok vazduha - povuci parametre iz spoljnjeg fajla
                 TimeSpan lifeSpan_vakumStan1 = TimeSpan.Zero, lifeSpan_vakumStan2 = TimeSpan.Zero;
-                for (int i = 0; i < incoming[26].pList.Count; i++)
+                for (int i = 0; i < incoming[9].pList.Count; i++)
                 {
-                    TimeSpan temp = incoming[26].eList[i].Subtract(incoming[26].pList[i]);
+                    TimeSpan temp = incoming[9].eList[i].Subtract(incoming[9].pList[i]);
                     lifeSpan_vakumStan1 += temp;
                 }
-                for (int i = 0; i < incoming[27].pList.Count; i++)
+                for (int i = 0; i < incoming[10].pList.Count; i++)
                 {
-                    TimeSpan temp = incoming[27].eList[i].Subtract(incoming[27].pList[i]);
+                    TimeSpan temp = incoming[10].eList[i].Subtract(incoming[10].pList[i]);
                     lifeSpan_vakumStan2 += temp;
                 }
 
@@ -320,62 +327,76 @@ namespace GanttChart
             }
             else if (station21.Parent.Controls.GetChildIndex(station21) == 0)
             {
-                if (incoming[6].pList.Count != 0)
+                if (incoming[1].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[6].pList.Count; i++)
+                    for (int i = 0; i < incoming[1].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Vakum Stanice 2", incoming[6].pList[i], incoming[6].eList[i], Color.Aqua, Color.Khaki, index2));
+                        lst1.Add(new BarInformation("Vakum Stanice 2", incoming[1].pList[i], incoming[1].eList[i], Color.Aqua, Color.Khaki, index2));
                     }
                     index2++;
                 }
-                if (incoming[7].pList.Count != 0)
+                if (incoming[2].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[7].pList.Count; i++)
+                    for (int i = 0; i < incoming[2].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Lift gore", incoming[7].pList[i], incoming[7].eList[i], Color.Red, Color.Khaki, index2));
+                        lst1.Add(new BarInformation("Lift gore", incoming[2].pList[i], incoming[2].eList[i], Color.Red, Color.Khaki, index2));
                     }
                     index2++;
                 }
-                if (incoming[8].pList.Count != 0)
+                if (incoming[3].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[8].pList.Count; i++)
+                    for (int i = 0; i < incoming[3].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Lift dole", incoming[8].pList[i], incoming[8].eList[i], Color.Blue, Color.Khaki, index2));
+                        lst1.Add(new BarInformation("Lift dole", incoming[3].pList[i], incoming[3].eList[i], Color.Blue, Color.Khaki, index2));
                     }
                     index2++;
                 }
-                if (incoming[9].pList.Count != 0)
+                if (incoming[4].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[9].pList.Count; i++)
+                    for (int i = 0; i < incoming[4].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Cilindar uvucen", incoming[9].pList[i], incoming[9].eList[i], Color.Khaki, Color.Khaki, index2));
+                        lst1.Add(new BarInformation("Cilindar uvucen", incoming[4].pList[i], incoming[4].eList[i], Color.Khaki, Color.Khaki, index2));
                     }
                     index2++;
                 }
 
-                if (incoming[9].pList.Count == 1)
+                if (incoming[4].pList.Count == 1)
                 {
-                    station21.lblCilindarUvu.Text = incoming[9].pList.Count.ToString() + " put";
+                    station21.lblCilindarUvu.Text = incoming[4].pList.Count.ToString() + " put";
                 }
-                else if (incoming[9].pList.Count > 1)
+                else if (incoming[4].pList.Count > 1)
                 {
-                    station21.lblCilindarUvu.Text = incoming[9].pList.Count.ToString() + " puta";
+                    station21.lblCilindarUvu.Text = incoming[4].pList.Count.ToString() + " puta";
                 }
-                if (incoming[7].pList.Count == 1)
+                else
                 {
-                    station21.txtLiftGoreValue.Text = incoming[7].pList.Count.ToString() + " put";
+                    station21.lblCilindarUvu.Text = "0 puta";
                 }
-                else if (incoming[7].pList.Count > 1)
+
+                if (incoming[2].pList.Count == 1)
                 {
-                    station21.txtLiftGoreValue.Text = incoming[7].pList.Count.ToString() + " puta";
+                    station21.txtLiftGoreValue.Text = incoming[2].pList.Count.ToString() + " put";
                 }
-                if (incoming[8].pList.Count == 1)
+                else if (incoming[2].pList.Count > 1)
                 {
-                    station21.txtLiftDoleValue.Text = incoming[8].pList.Count.ToString() + " put";
+                    station21.txtLiftGoreValue.Text = incoming[2].pList.Count.ToString() + " puta";
                 }
-                else if (incoming[8].pList.Count > 1)
+                else
                 {
-                    station21.txtLiftDoleValue.Text = incoming[8].pList.Count.ToString() + " puta";
+                    station21.txtLiftGoreValue.Text = "0 puta";
+                }
+
+                if (incoming[3].pList.Count == 1)
+                {
+                    station21.txtLiftDoleValue.Text = incoming[3].pList.Count.ToString() + " put";
+                }
+                else if (incoming[3].pList.Count > 1)
+                {
+                    station21.txtLiftDoleValue.Text = incoming[3].pList.Count.ToString() + " puta";
+                }
+                else
+                {
+                    station21.txtLiftDoleValue.Text = "0 puta";
                 }
                 
 
@@ -385,9 +406,9 @@ namespace GanttChart
                     TimeSpan temp = incoming[0].eList[i].Subtract(incoming[0].pList[i]);
                     vakumStan1 += temp;
                 }
-                for (int i = 0; i < incoming[6].pList.Count; i++)
+                for (int i = 0; i < incoming[1].pList.Count; i++)
                 {
-                    TimeSpan temp = incoming[6].eList[i].Subtract(incoming[6].pList[i]);
+                    TimeSpan temp = incoming[1].eList[i].Subtract(incoming[1].pList[i]);
                     vakumStan2 += temp;
                 }
 
@@ -420,8 +441,8 @@ namespace GanttChart
                 }
 
                 //Efektivnost
-                double ispravni = incoming[21].pList.Count;
-                double skart = incoming[22].pList.Count;
+                double ispravni = incoming[8].pList.Count;
+                double skart = incoming[9].pList.Count;
                 double efektivnost = (ispravni / (ispravni + skart)) * 100;
 
                 station21.siticoneCircleProgressBar1.Value = (int)efektivnost;
@@ -440,18 +461,18 @@ namespace GanttChart
 
                 //cylinder lifespan
                 station21.pbAktuatori.Maximum = 100000;
-                station21.pbAktuatori.Value = incoming[25].pList.Count * 2;
+                station21.pbAktuatori.Value = incoming[5].pList.Count * 2;
 
                 //70 l/min nominalni protok vazduha - povuci parametre iz spoljnjeg fajla
                 TimeSpan lifeSpan_vakumStan1 = TimeSpan.Zero, lifeSpan_vakumStan2 = TimeSpan.Zero;
-                for (int i = 0; i < incoming[26].pList.Count; i++)
+                for (int i = 0; i < incoming[6].pList.Count; i++)
                 {
-                    TimeSpan temp = incoming[26].eList[i].Subtract(incoming[26].pList[i]);
+                    TimeSpan temp = incoming[6].eList[i].Subtract(incoming[6].pList[i]);
                     lifeSpan_vakumStan1 += temp;
                 }
-                for (int i = 0; i < incoming[27].pList.Count; i++)
+                for (int i = 0; i < incoming[7].pList.Count; i++)
                 {
-                    TimeSpan temp = incoming[27].eList[i].Subtract(incoming[27].pList[i]);
+                    TimeSpan temp = incoming[7].eList[i].Subtract(incoming[7].pList[i]);
                     lifeSpan_vakumStan2 += temp;
                 }
                 int lifeSpan_potrosnja = (lifeSpan_vakumStan1.Hours * 70 * 60) + (lifeSpan_vakumStan1.Minutes * 70) + (lifeSpan_vakumStan1.Seconds * 70 / 60) + (lifeSpan_vakumStan2.Hours * 70 * 60) + (lifeSpan_vakumStan2.Minutes * 70) + (lifeSpan_vakumStan2.Seconds * 70 / 60);
@@ -464,132 +485,145 @@ namespace GanttChart
             }
             else if (station31.Parent.Controls.GetChildIndex(station31) == 0)
             {
-                if (incoming[10].pList.Count != 0)
+                if (incoming[0].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[10].pList.Count; i++)
+                    for (int i = 0; i < incoming[0].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Prenos u poz. prethodne stanice", incoming[10].pList[i], incoming[10].eList[i], Color.Chocolate, Color.Khaki, index3));
+                        lst1.Add(new BarInformation("Prenos u poz. prethodne stanice", incoming[0].pList[i], incoming[0].eList[i], Color.Chocolate, Color.Khaki, index3));
                     }
                     index3++;
                 }
-                if (incoming[11].pList.Count != 0)
+                if (incoming[1].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[11].pList.Count; i++)
+                    for (int i = 0; i < incoming[1].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Prenos u srednjoj poziciji", incoming[11].pList[i], incoming[11].eList[i], Color.DarkOliveGreen, Color.Khaki, index3));
+                        lst1.Add(new BarInformation("Prenos u srednjoj poziciji", incoming[1].pList[i], incoming[1].eList[i], Color.DarkOliveGreen, Color.Khaki, index3));
                     }
                     index3++;
                 }
-                if (incoming[12].pList.Count != 0)
+                if (incoming[2].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[12].pList.Count; i++)
+                    for (int i = 0; i < incoming[2].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Prenos u poz. sledece stanice", incoming[12].pList[i], incoming[12].eList[i], Color.ForestGreen, Color.Khaki, index3));
+                        lst1.Add(new BarInformation("Prenos u poz. sledece stanice", incoming[2].pList[i], incoming[2].eList[i], Color.ForestGreen, Color.Khaki, index3));
                     }
                     index3++;
                 }
-                if (incoming[13].pList.Count != 0)
+                if (incoming[3].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[13].pList.Count; i++)
+                    for (int i = 0; i < incoming[3].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Hvataljka ispruzena", incoming[13].pList[i], incoming[13].eList[i], Color.White, Color.Khaki, index3));
+                        lst1.Add(new BarInformation("Hvataljka ispruzena", incoming[3].pList[i], incoming[3].eList[i], Color.White, Color.Khaki, index3));
                     }
                     index3++;
                 }
-                if (incoming[14].pList.Count != 0)
+                if (incoming[4].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[14].pList.Count; i++)
+                    for (int i = 0; i < incoming[4].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Hvataljka skupljena", incoming[14].pList[i], incoming[14].eList[i], Color.Black, Color.Honeydew, index3));
+                        lst1.Add(new BarInformation("Hvataljka skupljena", incoming[4].pList[i], incoming[4].eList[i], Color.Black, Color.Honeydew, index3));
                     }
                     index3++;
                 }
-                if (incoming[15].pList.Count != 0)
+                if (incoming[5].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[15].pList.Count; i++)
+                    for (int i = 0; i < incoming[5].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Hvataljka otvorena", incoming[15].pList[i], incoming[15].eList[i], Color.Navy, Color.Khaki, index3));
+                        lst1.Add(new BarInformation("Hvataljka otvorena", incoming[5].pList[i], incoming[5].eList[i], Color.Navy, Color.Khaki, index3));
                     }
                     index3++;
                 }
 
-                ///////////////////////////////////////
-                if (incoming[13].pList.Count == 1)
+                if (incoming[3].pList.Count == 1)
                 {
-                    station31.lblHvatIspruzena.Text = incoming[13].pList.Count.ToString() + " put";
+                    station31.lblHvatIspruzena.Text = incoming[3].pList.Count.ToString() + " put";
                 }
-                else if (incoming[13].pList.Count > 1)
+                else if (incoming[3].pList.Count > 1)
                 {
-                    station31.lblHvatIspruzena.Text = incoming[13].pList.Count.ToString() + " puta";
+                    station31.lblHvatIspruzena.Text = incoming[3].pList.Count.ToString() + " puta";
                 }
-                if (incoming[14].pList.Count == 1)
+                else
                 {
-                    station31.lblHvatIspruzena.Text = incoming[14].pList.Count.ToString() + " put";
+                    station31.lblHvatIspruzena.Text = "0 puta";
                 }
-                else if (incoming[14].pList.Count > 1)
+
+                if (incoming[4].pList.Count == 1)
                 {
-                    station31.lblHvatIspruzena.Text = incoming[14].pList.Count.ToString() + " puta";
+                    station31.lblHvatSkupljena.Text = incoming[4].pList.Count.ToString() + " put";
                 }
-                if (incoming[15].pList.Count == 1)
+                else if (incoming[4].pList.Count > 1)
                 {
-                    station31.lblHvatOtvorena.Text = incoming[15].pList.Count.ToString() + " put";
+                    station31.lblHvatSkupljena.Text = incoming[4].pList.Count.ToString() + " puta";
                 }
-                else if (incoming[15].pList.Count > 1)
+                else
                 {
-                    station31.lblHvatOtvorena.Text = incoming[15].pList.Count.ToString() + " puta";
+                    station31.lblHvatSkupljena.Text = "0 puta";
+                }
+
+                if (incoming[5].pList.Count == 1)
+                {
+                    station31.lblHvatOtvorena.Text = incoming[5].pList.Count.ToString() + " put";
+                }
+                else if (incoming[5].pList.Count > 1)
+                {
+                    station31.lblHvatOtvorena.Text = incoming[5].pList.Count.ToString() + " puta";
+                }
+                else
+                {
+                    station31.lblHvatOtvorena.Text = "0 puta";
                 }
 
                 station31.pbCilindarHvataljke.Maximum = 100000;
-                station31.pbCilindarHvataljke.Value = incoming[35].pList.Count + incoming[36].pList.Count;
+                station31.pbCilindarHvataljke.Value = incoming[6].pList.Count + incoming[7].pList.Count;
 
             }
             else if (station41.Parent.Controls.GetChildIndex(station41) == 0)
             {
-                if (incoming[16].pList.Count != 0)
+                if (incoming[0].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[16].pList.Count; i++)
+                    for (int i = 0; i < incoming[0].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Motor trake", incoming[16].pList[i], incoming[16].eList[i], Color.Black, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Motor trake", incoming[0].pList[i], incoming[0].eList[i], Color.Black, Color.Khaki, index4));
                     }
                     index4++;
                 }
-                if (incoming[17].pList.Count != 0)
+                if (incoming[1].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[17].pList.Count; i++)
+                    for (int i = 0; i < incoming[1].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Switch 1 - uvucen", incoming[17].pList[i], incoming[17].eList[i], Color.Red, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Switch 1 - uvucen", incoming[1].pList[i], incoming[1].eList[i], Color.Red, Color.Khaki, index4));
                     }
                     index4++;
                 }
-                if (incoming[18].pList.Count != 0)
+                if (incoming[2].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[18].pList.Count; i++)
+                    for (int i = 0; i < incoming[2].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Switch 1 - izvucen", incoming[18].pList[i], incoming[18].eList[i], Color.Blue, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Switch 1 - izvucen", incoming[2].pList[i], incoming[2].eList[i], Color.Blue, Color.Khaki, index4));
                     }
                     index4++;
                 }
-                if (incoming[19].pList.Count != 0)
+                if (incoming[3].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[19].pList.Count; i++)
+                    for (int i = 0; i < incoming[3].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Switch 2 - uvucen", incoming[19].pList[i], incoming[19].eList[i], Color.YellowGreen, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Switch 2 - uvucen", incoming[3].pList[i], incoming[3].eList[i], Color.YellowGreen, Color.Khaki, index4));
                     }
                     index4++;
                 }
-                if (incoming[20].pList.Count != 0)
+                if (incoming[4].pList.Count != 0)
                 {
-                    for (int i = 0; i < incoming[20].pList.Count; i++)
+                    for (int i = 0; i < incoming[4].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Switch 2 - ispruzen", incoming[20].pList[i], incoming[20].eList[i], Color.MediumPurple, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Switch 2 - ispruzen", incoming[4].pList[i], incoming[4].eList[i], Color.MediumPurple, Color.Khaki, index4));
                     }
                     index4++;
                 }
 
                 TimeSpan motorTrake = TimeSpan.Zero;
-                for (int i = 0; i < incoming[16].pList.Count; i++)
+                for (int i = 0; i < incoming[0].pList.Count; i++)
                 {
-                    TimeSpan temp = incoming[16].eList[i].Subtract(incoming[16].pList[i]);
+                    TimeSpan temp = incoming[0].eList[i].Subtract(incoming[0].pList[i]);
                     motorTrake += temp;
                 }
                 if (motorTrake.Minutes < 1 && motorTrake.Hours < 1)
@@ -605,32 +639,41 @@ namespace GanttChart
                     station41.lblMotorTrake.Text = motorTrake.Hours.ToString() + "h " + motorTrake.Minutes.ToString() + "min " + motorTrake.Seconds.ToString() + "s";
                 }
 
-                if (incoming[18].pList.Count == 1)
+                if (incoming[2].pList.Count == 1)
                 {
-                    station41.lblRucica1.Text = incoming[18].pList.Count.ToString() + " put";
+                    station41.lblRucica1.Text = incoming[2].pList.Count.ToString() + " put";
                 }
-                else if (incoming[18].pList.Count > 1)
+                else if (incoming[2].pList.Count > 1)
                 {
-                    station41.lblRucica1.Text = incoming[18].pList.Count.ToString() + " puta";
+                    station41.lblRucica1.Text = incoming[2].pList.Count.ToString() + " puta";
                 }
-                if (incoming[20].pList.Count == 1)
+                else
                 {
-                    station41.lblRucica2.Text = incoming[20].pList.Count.ToString() + " put";
+                    station41.lblRucica1.Text = "0 puta";
                 }
-                else if (incoming[20].pList.Count > 1)
+
+                if (incoming[4].pList.Count == 1)
                 {
-                    station41.lblRucica2.Text = incoming[20].pList.Count.ToString() + " puta";
+                    station41.lblRucica2.Text = incoming[4].pList.Count.ToString() + " put";
+                }
+                else if (incoming[4].pList.Count > 1)
+                {
+                    station41.lblRucica2.Text = incoming[4].pList.Count.ToString() + " puta";
+                }
+                else
+                {
+                    station41.lblRucica2.Text = "0 puta";
                 }
 
                 station41.pbCilindar1.Maximum = 100000;
-                station41.pbCilindar1.Value = incoming[31].pList.Count + incoming[32].pList.Count;
+                station41.pbCilindar1.Value = incoming[5].pList.Count + incoming[6].pList.Count;
 
                 station41.pbCilindar2.Maximum = 100000;
-                station41.pbCilindar2.Value = incoming[33].pList.Count + incoming[34].pList.Count;
+                station41.pbCilindar2.Value = incoming[7].pList.Count + incoming[8].pList.Count;
 
                 //Efektivnost
-                double ispravni = incoming[28].pList.Count + incoming[29].pList.Count;
-                double skart = incoming[30].pList.Count;
+                double ispravni = incoming[9].pList.Count + incoming[10].pList.Count;
+                double skart = incoming[11].pList.Count;
                 double efektivnost = (ispravni / (ispravni + skart)) * 100;
                 station41.gaugeEfektivnost.Value = (int)efektivnost;
                 
@@ -684,101 +727,108 @@ namespace GanttChart
 
             List<TwoLists> lists = new List<TwoLists>();
 
-            //**************** STANICA 1 *********************//
-            TwoLists vakum1 = Obrada("1", maska_bit1, 1, false, start, end);  // incoming[0]
-            lists.Add(vakum1);
-            TwoLists cilindarIzvucen = Obrada("1", maska_bit2, 2, false, start, end); //incoming[1]
-            lists.Add(cilindarIzvucen);
-            TwoLists cilindarUvucen = Obrada("1", maska_bit3, 4, false, start, end); //incoming[2]
-            lists.Add(cilindarUvucen);
-            TwoLists prazanMagacin = Obrada("1", maska_bit4, 8, false, start, end); //incoming[3]
-            lists.Add(prazanMagacin);
-            TwoLists kranDoMagacina = Obrada("1", maska_bit5, 16, false, start, end); //incoming[4]
-            lists.Add(kranDoMagacina);
-            TwoLists kranDoStanice = Obrada("1", maska_bit6, 32, false, start, end); //incoming[5]
-            lists.Add(kranDoStanice);
+            if (station11.Parent.Controls.GetChildIndex(station11) == 0)
+            {
+                TwoLists vakum1 = Obrada("1", maska_bit1, 1, false, start, end);  // incoming[0]
+                lists.Add(vakum1);
+                TwoLists cilindarIzvucen = Obrada("1", maska_bit2, 2, false, start, end); //incoming[1]
+                lists.Add(cilindarIzvucen);
+                TwoLists cilindarUvucen = Obrada("1", maska_bit3, 4, false, start, end); //incoming[2]
+                lists.Add(cilindarUvucen);
+                TwoLists prazanMagacin = Obrada("1", maska_bit4, 8, false, start, end); //incoming[3]
+                lists.Add(prazanMagacin);
+                TwoLists kranDoMagacina = Obrada("1", maska_bit5, 16, false, start, end); //incoming[4]
+                lists.Add(kranDoMagacina);
+                TwoLists kranDoStanice = Obrada("1", maska_bit6, 32, false, start, end); //incoming[5]
+                lists.Add(kranDoStanice);
+                TwoLists vakum2 = Obrada("1", maska_bit1, 1, true, start, end);  //incoming[6]
+                lists.Add(vakum2);
 
-            //**************** STANICA 2 *********************//
-            TwoLists vakum2 = Obrada("1", maska_bit1, 1, true, start, end);  //incoming[6]
-            lists.Add(vakum2);
-            TwoLists liftGore = Obrada("1", maska_bit2, 2, true, start, end);  //incoming[7]
-            lists.Add(liftGore);
-            TwoLists liftDole = Obrada("1", maska_bit3, 4, true, start, end);  //incoming[8]
-            lists.Add(liftDole);
-            TwoLists cilindar2Uvucen = Obrada("1", maska_bit4, 8, true, start, end);  //incoming[9]
-            lists.Add(cilindar2Uvucen);
+                TwoLists lifeSpan_cilindarIzvucen_stanica1 = Obrada("1", maska_bit2, 2, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[7]
+                lists.Add(lifeSpan_cilindarIzvucen_stanica1);
+                TwoLists lifeSpan_cilindarUvucen_stanica1 = Obrada("1", maska_bit3, 4, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[8]
+                lists.Add(lifeSpan_cilindarUvucen_stanica1);
+                TwoLists lifeSpan_vakum1 = Obrada("1", maska_bit1, 1, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now);  // incoming[9]
+                lists.Add(lifeSpan_vakum1);
+                TwoLists lifeSpan_vakum2 = Obrada("1", maska_bit1, 1, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now);  //incoming[10]
+                lists.Add(lifeSpan_vakum2);
 
+            }
+            else if (station21.Parent.Controls.GetChildIndex(station21) == 0)
+            {
+                TwoLists vakum1 = Obrada("1", maska_bit1, 1, false, start, end);  // incoming[0]
+                lists.Add(vakum1);
+                TwoLists vakum2 = Obrada("1", maska_bit1, 1, true, start, end);  //incoming[1]
+                lists.Add(vakum2);
+                TwoLists liftGore = Obrada("1", maska_bit2, 2, true, start, end);  //incoming[2]
+                lists.Add(liftGore);
+                TwoLists liftDole = Obrada("1", maska_bit3, 4, true, start, end);  //incoming[3]
+                lists.Add(liftDole);
+                TwoLists cilindar2Uvucen = Obrada("1", maska_bit4, 8, true, start, end);  //incoming[4]
+                lists.Add(cilindar2Uvucen);
 
-            //**************** STANICA 3 *********************//
-            TwoLists handlingPrethodna = Obrada("2", maska_bit2, 2, false, start, end);  // incoming[10]
-            lists.Add(handlingPrethodna);
-            TwoLists handlingSredina = Obrada("2", maska_bit3, 4, false, start, end); //incoming[11]
-            lists.Add(handlingSredina);
-            TwoLists handlingSledeca = Obrada("2", maska_bit4, 8, false, start, end); //incoming[12]
-            lists.Add(handlingSledeca);
-            TwoLists hvataljkaIspruzena = Obrada("2", maska_bit5, 16, false, start, end); //incoming[13]
-            lists.Add(hvataljkaIspruzena);
-            TwoLists hvataljkaSkupljena = Obrada("2", maska_bit6, 32, false, start, end); //incoming[14]
-            lists.Add(hvataljkaSkupljena);
-            TwoLists hvataljkaOtvorena = Obrada("2", maska_bit7, 64, false, start, end); //incoming[15]
-            lists.Add(hvataljkaOtvorena);
+                TwoLists lifeSpan_cilindar2Uvucen_stanica2 = Obrada("1", maska_bit4, 8, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now);  //incoming[5]
+                lists.Add(lifeSpan_cilindar2Uvucen_stanica2);
+                TwoLists lifeSpan_vakum1 = Obrada("1", maska_bit1, 1, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now);  // incoming[6]
+                lists.Add(lifeSpan_vakum1);
+                TwoLists lifeSpan_vakum2 = Obrada("1", maska_bit1, 1, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now);  //incoming[7]
+                lists.Add(lifeSpan_vakum2);
 
-            //**************** STANICA 4 *********************//
-            TwoLists motorTrake = Obrada("2", maska_bit1, 1, true, start, end);  // incoming[16]
-            lists.Add(motorTrake);
-            TwoLists switch1Uvucen = Obrada("2", maska_bit2, 2, true, start, end); //incoming[17]
-            lists.Add(switch1Uvucen);
-            TwoLists switch1Ispruzen = Obrada("2", maska_bit3, 4, true, start, end); //incoming[18]
-            lists.Add(switch1Ispruzen);
-            TwoLists switch2Uvucen = Obrada("2", maska_bit4, 8, true, start, end); //incoming[19]
-            lists.Add(switch2Uvucen);
-            TwoLists switch2Ispruzen = Obrada("2", maska_bit5, 16, true, start, end); //incoming[20]
-            lists.Add(switch2Ispruzen);
+                TwoLists stanica2_ispravan = Obrada("1", maska_stan2_ispravan, 3, true, start, end); //incoming[8]
+                lists.Add(stanica2_ispravan);
+                TwoLists stanica2_skart = Obrada("1", maska_stan2_skart, 4, true, start, end); //incoming[9]
+                lists.Add(stanica2_skart);
 
-            //efektivnost - stanica 2
-            TwoLists stanica2_ispravan = Obrada("1", maska_stan2_ispravan, 3, true, start, end); //incoming[21]
-            lists.Add(stanica2_ispravan);
-            TwoLists stanica2_skart = Obrada("1", maska_stan2_skart, 4, true, start, end); //incoming[22]
-            lists.Add(stanica2_skart);
+            }
+            else if (station31.Parent.Controls.GetChildIndex(station31) == 0)
+            {
+                TwoLists handlingPrethodna = Obrada("2", maska_bit2, 2, false, start, end);  // incoming[0]
+                lists.Add(handlingPrethodna);
+                TwoLists handlingSredina = Obrada("2", maska_bit3, 4, false, start, end); //incoming[1]
+                lists.Add(handlingSredina);
+                TwoLists handlingSledeca = Obrada("2", maska_bit4, 8, false, start, end); //incoming[2]
+                lists.Add(handlingSledeca);
+                TwoLists hvataljkaIspruzena = Obrada("2", maska_bit5, 16, false, start, end); //incoming[3]
+                lists.Add(hvataljkaIspruzena);
+                TwoLists hvataljkaSkupljena = Obrada("2", maska_bit6, 32, false, start, end); //incoming[4]
+                lists.Add(hvataljkaSkupljena);
+                TwoLists hvataljkaOtvorena = Obrada("2", maska_bit7, 64, false, start, end); //incoming[5]
+                lists.Add(hvataljkaOtvorena);
 
-            //lifespan bars
-            TwoLists lifeSpan_cilindarIzvucen_stanica1 = Obrada("1", maska_bit2, 2, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[23]
-            lists.Add(lifeSpan_cilindarIzvucen_stanica1);
-            TwoLists lifeSpan_cilindarUvucen_stanica1 = Obrada("1", maska_bit3, 4, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[24]
-            lists.Add(lifeSpan_cilindarUvucen_stanica1);
+                TwoLists lifeSpan_hvataljkaIspruzena = Obrada("2", maska_bit5, 16, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[6]
+                lists.Add(lifeSpan_hvataljkaIspruzena);
+                TwoLists lifeSpan_hvataljkaSkupljena = Obrada("2", maska_bit6, 32, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[7]
+                lists.Add(lifeSpan_hvataljkaSkupljena);
+            }
+            else if (station41.Parent.Controls.GetChildIndex(station41) == 0)
+            {
+                TwoLists motorTrake = Obrada("2", maska_bit1, 1, true, start, end);  // incoming[16] [0]
+                lists.Add(motorTrake);
+                TwoLists switch1Uvucen = Obrada("2", maska_bit2, 2, true, start, end); //incoming[17] [1]
+                lists.Add(switch1Uvucen);
+                TwoLists switch1Ispruzen = Obrada("2", maska_bit3, 4, true, start, end); //incoming[18] [2]
+                lists.Add(switch1Ispruzen);
+                TwoLists switch2Uvucen = Obrada("2", maska_bit4, 8, true, start, end); //incoming[19] [3]
+                lists.Add(switch2Uvucen);
+                TwoLists switch2Ispruzen = Obrada("2", maska_bit5, 16, true, start, end); //incoming[20] [4]
+                lists.Add(switch2Ispruzen);
 
-            TwoLists lifeSpan_cilindar2Uvucen_stanica2 = Obrada("1", maska_bit4, 8, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now);  //incoming[25]
-            lists.Add(lifeSpan_cilindar2Uvucen_stanica2);
+                TwoLists lifeSpan_switch1Uvucen = Obrada("2", maska_bit2, 2, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[5]
+                lists.Add(lifeSpan_switch1Uvucen);
+                TwoLists lifeSpan_switch1Ispruzen = Obrada("2", maska_bit3, 4, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[6]
+                lists.Add(lifeSpan_switch1Ispruzen);
+                TwoLists lifeSpan_switch2Uvucen = Obrada("2", maska_bit4, 8, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[7]
+                lists.Add(lifeSpan_switch2Uvucen);
+                TwoLists lifeSpan_switch2Ispruzen = Obrada("2", maska_bit5, 16, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[8]
+                lists.Add(lifeSpan_switch2Ispruzen);
 
-            //lifespan vakum
-            TwoLists lifeSpan_vakum1 = Obrada("1", maska_bit1, 1, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now);  // incoming[26]
-            lists.Add(lifeSpan_vakum1);
-            TwoLists lifeSpan_vakum2 = Obrada("1", maska_bit1, 1, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now);  //incoming[27]
-            lists.Add(lifeSpan_vakum2);
-
-            //efektivnost - stanica 4
-            TwoLists stanica4_ispravan1 = Obrada("2", maska_stan4_ispravan1, 13, true, start, end); //incoming[28]
-            lists.Add(stanica4_ispravan1);
-            TwoLists stanica4_ispravan2 = Obrada("2", maska_stan4_ispravan2, 19, true, start, end); //incoming[29]
-            lists.Add(stanica4_ispravan2);
-            TwoLists stanica4_skart = Obrada("2", maska_stan4_skart, 11, true, start, end); //incoming[30]
-            lists.Add(stanica4_skart);
-
-            //lifespan - stanica 4
-            TwoLists lifeSpan_switch1Uvucen = Obrada("2", maska_bit2, 2, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[31]
-            lists.Add(lifeSpan_switch1Uvucen);
-            TwoLists lifeSpan_switch1Ispruzen = Obrada("2", maska_bit3, 4, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[32]
-            lists.Add(lifeSpan_switch1Ispruzen);
-            TwoLists lifeSpan_switch2Uvucen = Obrada("2", maska_bit4, 8, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[33]
-            lists.Add(lifeSpan_switch2Uvucen);
-            TwoLists lifeSpan_switch2Ispruzen = Obrada("2", maska_bit5, 16, true, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[34]
-            lists.Add(lifeSpan_switch2Ispruzen);
-
-            //lifespan - stanica 3
-            TwoLists lifeSpan_hvataljkaIspruzena = Obrada("2", maska_bit5, 16, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[35]
-            lists.Add(lifeSpan_hvataljkaIspruzena);
-            TwoLists lifeSpan_hvataljkaSkupljena = Obrada("2", maska_bit6, 32, false, new DateTime(2023, 1, 1, 8, 0, 0), DateTime.Now); //incoming[36]
-            lists.Add(lifeSpan_hvataljkaSkupljena);
+                TwoLists stanica4_ispravan1 = Obrada("2", maska_stan4_ispravan1, 13, true, start, end); //incoming[9]
+                lists.Add(stanica4_ispravan1);
+                TwoLists stanica4_ispravan2 = Obrada("2", maska_stan4_ispravan2, 19, true, start, end); //incoming[10]
+                lists.Add(stanica4_ispravan2);
+                TwoLists stanica4_skart = Obrada("2", maska_stan4_skart, 11, true, start, end); //incoming[11]
+                lists.Add(stanica4_skart);
+            }
 
             return lists;
         }
