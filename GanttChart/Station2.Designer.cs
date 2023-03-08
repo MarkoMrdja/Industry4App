@@ -32,6 +32,8 @@ namespace GanttChart
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.grpbxVazduh = new System.Windows.Forms.GroupBox();
+            this.pbVazduh = new Siticone.Desktop.UI.WinForms.SiticoneProgressBar();
+            this.siticoneSeparator1 = new Siticone.Desktop.UI.WinForms.SiticoneSeparator();
             this.lblPotrosnjaVazduha = new System.Windows.Forms.Label();
             this.lblVakumStan2 = new System.Windows.Forms.Label();
             this.lblVakumStan1 = new System.Windows.Forms.Label();
@@ -40,6 +42,8 @@ namespace GanttChart
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.grpbxAktuatori = new System.Windows.Forms.GroupBox();
+            this.pbAktuatori = new Siticone.Desktop.UI.WinForms.SiticoneProgressBar();
+            this.siticoneSeparator2 = new Siticone.Desktop.UI.WinForms.SiticoneSeparator();
             this.txtLiftDoleValue = new System.Windows.Forms.Label();
             this.txtLiftDole = new System.Windows.Forms.Label();
             this.txtLiftGoreValue = new System.Windows.Forms.Label();
@@ -50,10 +54,6 @@ namespace GanttChart
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.siticoneCircleProgressBar1 = new Siticone.Desktop.UI.WinForms.SiticoneCircleProgressBar();
             this.lblEffProcenti = new System.Windows.Forms.Label();
-            this.siticoneSeparator1 = new Siticone.Desktop.UI.WinForms.SiticoneSeparator();
-            this.siticoneSeparator2 = new Siticone.Desktop.UI.WinForms.SiticoneSeparator();
-            this.pbVazduh = new Siticone.Desktop.UI.WinForms.SiticoneProgressBar();
-            this.pbAktuatori = new Siticone.Desktop.UI.WinForms.SiticoneProgressBar();
             this.grpbxVazduh.SuspendLayout();
             this.grpbxAktuatori.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -102,6 +102,22 @@ namespace GanttChart
             this.grpbxVazduh.TabStop = false;
             this.grpbxVazduh.Text = "VAZDUH";
             // 
+            // pbVazduh
+            // 
+            this.pbVazduh.Location = new System.Drawing.Point(6, 317);
+            this.pbVazduh.Name = "pbVazduh";
+            this.pbVazduh.Size = new System.Drawing.Size(495, 31);
+            this.pbVazduh.TabIndex = 14;
+            this.pbVazduh.Text = "siticoneProgressBar1";
+            this.pbVazduh.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            // 
+            // siticoneSeparator1
+            // 
+            this.siticoneSeparator1.Location = new System.Drawing.Point(6, 198);
+            this.siticoneSeparator1.Name = "siticoneSeparator1";
+            this.siticoneSeparator1.Size = new System.Drawing.Size(495, 19);
+            this.siticoneSeparator1.TabIndex = 11;
+            // 
             // lblPotrosnjaVazduha
             // 
             this.lblPotrosnjaVazduha.AutoSize = true;
@@ -148,7 +164,7 @@ namespace GanttChart
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.Location = new System.Drawing.Point(5, 226);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(191, 31);
+            this.label3.Size = new System.Drawing.Size(180, 30);
             this.label3.TabIndex = 2;
             this.label3.Text = "Potrošnja vazuha:";
             // 
@@ -158,9 +174,9 @@ namespace GanttChart
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(98, 117);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(290, 28);
+            this.label2.Size = new System.Drawing.Size(295, 28);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Ukljucenost vakuma STANICA 2:";
+            this.label2.Text = "Ukljucenost vazduha STANICA 2:";
             // 
             // label5
             // 
@@ -168,9 +184,9 @@ namespace GanttChart
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(98, 36);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(290, 28);
+            this.label5.Size = new System.Drawing.Size(295, 28);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Uključenost vakuma STANICA 1:";
+            this.label5.Text = "Uključenost vazduha STANICA 1:";
             // 
             // grpbxAktuatori
             // 
@@ -190,6 +206,22 @@ namespace GanttChart
             this.grpbxAktuatori.TabIndex = 9;
             this.grpbxAktuatori.TabStop = false;
             this.grpbxAktuatori.Text = "AKTUATORI";
+            // 
+            // pbAktuatori
+            // 
+            this.pbAktuatori.Location = new System.Drawing.Point(6, 317);
+            this.pbAktuatori.Name = "pbAktuatori";
+            this.pbAktuatori.Size = new System.Drawing.Size(245, 30);
+            this.pbAktuatori.TabIndex = 15;
+            this.pbAktuatori.Text = "siticoneProgressBar1";
+            this.pbAktuatori.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            // 
+            // siticoneSeparator2
+            // 
+            this.siticoneSeparator2.Location = new System.Drawing.Point(6, 107);
+            this.siticoneSeparator2.Name = "siticoneSeparator2";
+            this.siticoneSeparator2.Size = new System.Drawing.Size(245, 15);
+            this.siticoneSeparator2.TabIndex = 14;
             // 
             // txtLiftDoleValue
             // 
@@ -304,38 +336,6 @@ namespace GanttChart
             this.lblEffProcenti.TabIndex = 0;
             this.lblEffProcenti.Text = "  0%";
             this.lblEffProcenti.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // siticoneSeparator1
-            // 
-            this.siticoneSeparator1.Location = new System.Drawing.Point(6, 198);
-            this.siticoneSeparator1.Name = "siticoneSeparator1";
-            this.siticoneSeparator1.Size = new System.Drawing.Size(495, 19);
-            this.siticoneSeparator1.TabIndex = 11;
-            // 
-            // siticoneSeparator2
-            // 
-            this.siticoneSeparator2.Location = new System.Drawing.Point(6, 107);
-            this.siticoneSeparator2.Name = "siticoneSeparator2";
-            this.siticoneSeparator2.Size = new System.Drawing.Size(245, 15);
-            this.siticoneSeparator2.TabIndex = 14;
-            // 
-            // pbVazduh
-            // 
-            this.pbVazduh.Location = new System.Drawing.Point(6, 317);
-            this.pbVazduh.Name = "pbVazduh";
-            this.pbVazduh.Size = new System.Drawing.Size(495, 31);
-            this.pbVazduh.TabIndex = 14;
-            this.pbVazduh.Text = "siticoneProgressBar1";
-            this.pbVazduh.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            // 
-            // pbAktuatori
-            // 
-            this.pbAktuatori.Location = new System.Drawing.Point(6, 317);
-            this.pbAktuatori.Name = "pbAktuatori";
-            this.pbAktuatori.Size = new System.Drawing.Size(245, 30);
-            this.pbAktuatori.TabIndex = 15;
-            this.pbAktuatori.Text = "siticoneProgressBar1";
-            this.pbAktuatori.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
             // Station2
             // 

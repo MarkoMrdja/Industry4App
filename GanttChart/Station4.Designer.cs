@@ -207,7 +207,7 @@ namespace GanttChart
             this.groupBox3.Size = new System.Drawing.Size(200, 354);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "LIFESPAN CILINDRA";
+            this.groupBox3.Text = "ŽIVOTNI VEK CILINDRA";
             // 
             // label9
             // 

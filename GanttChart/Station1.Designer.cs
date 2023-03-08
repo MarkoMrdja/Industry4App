@@ -166,9 +166,9 @@ namespace GanttChart
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.Location = new System.Drawing.Point(98, 117);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(286, 28);
+            this.label2.Size = new System.Drawing.Size(291, 28);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Uključenost vakuma STANICA 2";
+            this.label2.Text = "Uključenost vazduha STANICA 2";
             // 
             // label5
             // 
@@ -176,9 +176,9 @@ namespace GanttChart
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.Location = new System.Drawing.Point(98, 36);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(286, 28);
+            this.label5.Size = new System.Drawing.Size(291, 28);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Uključenost vakuma STANICA 1";
+            this.label5.Text = "Uključenost vazduha STANICA 1";
             // 
             // grpbxAktuatori
             // 

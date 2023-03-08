@@ -174,6 +174,8 @@ namespace GanttChart
             List<BarInformation> lst1 = new List<BarInformation>();
             List<TwoLists> incoming = Obradjeno(dtpStart.Value, dtpEnd.Value);
             int index1 = 0, index2 = 0, index3 = 0, index4 = 0;
+            bool msgBoxFlag_stan1_vazduh = false, msgBoxFlag_stan1_cilindar = false, msgBoxFlag_stan2_vazduh = false, msgBoxFlag_stan2_cilindar = false,
+                msgBoxFlag_stan3_cilindar = false, msgBoxFlag_stan4_cilindar1 = false, msgBoxFlag_stan4_cilindar2 = false;
 
             if (station11.Parent.Controls.GetChildIndex(station11) == 0)
             {
@@ -300,8 +302,29 @@ namespace GanttChart
                 }
 
                 //cylinder lifespan
-                station11.pbAktuatori.Maximum = 100000;
-                station11.pbAktuatori.Value = incoming[7].pList.Count + incoming[8].pList.Count;
+                station11.pbAktuatori.Maximum = 25000000;
+                station11.pbAktuatori.Value = 25000000 - incoming[7].pList.Count + incoming[8].pList.Count;
+                if(station11.pbAktuatori.Value >= 17500000)
+                {
+                    station11.pbAktuatori.ProgressColor = Color.Green;
+                    station11.pbAktuatori.ProgressColor2 = Color.Green;
+                }
+                else if (station11.pbAktuatori.Value >= 7500000 && station11.pbAktuatori.Value < 17500000)
+                {
+                    station11.pbAktuatori.ProgressColor = Color.Yellow;
+                    station11.pbAktuatori.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station11.pbAktuatori.ProgressColor = Color.Red;
+                    station11.pbAktuatori.ProgressColor2 = Color.Red;
+                }
+
+                if(station11.pbAktuatori.Value < 7500000 && msgBoxFlag_stan1_cilindar == false)
+                {
+                    msgBoxFlag_stan1_cilindar = true;
+                    MessageBox.Show("Cilinar magacina je dostigao više od 70% predviđenog životnog veka!\nProveriti stanje cilindra.", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
 
                 //70 l/min nominalni protok vazduha - povuci parametre iz spoljnjeg fajla
@@ -322,7 +345,28 @@ namespace GanttChart
 
                 int lifeSpan_potrosnja = (lifeSpan_vakumStan1.Hours * 70 * 60) + (lifeSpan_vakumStan1.Minutes * 70) + (lifeSpan_vakumStan1.Seconds * 70 / 60) + (lifeSpan_vakumStan2.Hours * 70 * 60) + (lifeSpan_vakumStan2.Minutes * 70) + (lifeSpan_vakumStan2.Seconds * 70 / 60);
                 station11.pbVazduh.Maximum = 70 * 60 * 10000;
-                station11.pbVazduh.Value = lifeSpan_potrosnja;
+                station11.pbVazduh.Value = (70 * 60 * 10000) - lifeSpan_potrosnja;
+                if (station11.pbVazduh.Value >= (70 * 60 * 7000))
+                {
+                    station11.pbVazduh.ProgressColor = Color.Green;
+                    station11.pbVazduh.ProgressColor2 = Color.Green;
+                }
+                else if (station11.pbVazduh.Value >= (70 * 60 * 3000) && station11.pbVazduh.Value < (70 * 60 * 7000))
+                {
+                    station11.pbVazduh.ProgressColor = Color.Yellow;
+                    station11.pbVazduh.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station11.pbVazduh.ProgressColor = Color.Red;
+                    station11.pbVazduh.ProgressColor2 = Color.Red;
+                }
+
+                if(station11.pbVazduh.Value < (70 * 60 * 3000) && msgBoxFlag_stan1_vazduh == false)
+                {
+                    msgBoxFlag_stan1_vazduh = true;
+                    MessageBox.Show("Filter vazduha dostigao više od 70% predviđenih radnih sati.\n Preporučuen servis!", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
             }
             else if (station21.Parent.Controls.GetChildIndex(station21) == 0)
@@ -331,7 +375,7 @@ namespace GanttChart
                 {
                     for (int i = 0; i < incoming[1].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Vakum Stanice 2", incoming[1].pList[i], incoming[1].eList[i], Color.Aqua, Color.Khaki, index2));
+                        lst1.Add(new BarInformation("Vazduh Stanice 2", incoming[1].pList[i], incoming[1].eList[i], Color.Aqua, Color.Khaki, index2));
                     }
                     index2++;
                 }
@@ -449,6 +493,7 @@ namespace GanttChart
                 if (efektivnost < 10.0)
                 {
                     station21.lblEffProcenti.Text = "  " + (int)efektivnost + "%";
+                    station21.siticoneCircleProgressBar1.ProgressColor = Color.Green;
                 }
                 else if(efektivnost > 9.0 && efektivnost < 100.0)
                 {
@@ -459,9 +504,46 @@ namespace GanttChart
                     station21.lblEffProcenti.Text = (int)efektivnost + "%";
                 }
 
+                if (efektivnost >= 70.0)
+                {
+                    station21.siticoneCircleProgressBar1.ProgressColor = Color.Green;
+                    station21.siticoneCircleProgressBar1.ProgressColor2 = Color.Green;
+                }
+                else if (efektivnost >= 30.0 && efektivnost < 70.0)
+                {
+                    station21.siticoneCircleProgressBar1.ProgressColor = Color.Yellow;
+                    station21.siticoneCircleProgressBar1.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station21.siticoneCircleProgressBar1.ProgressColor = Color.Red;
+                    station21.siticoneCircleProgressBar1.ProgressColor2 = Color.Red;
+                }
+
                 //cylinder lifespan
-                station21.pbAktuatori.Maximum = 100000;
-                station21.pbAktuatori.Value = incoming[5].pList.Count * 2;
+                station21.pbAktuatori.Maximum = 25000000;
+                station21.pbAktuatori.Value = 25000000 - incoming[5].pList.Count * 2;
+                if (station21.pbAktuatori.Value >= 17500000)
+                {
+                    station21.pbAktuatori.ProgressColor = Color.Green;
+                    station21.pbAktuatori.ProgressColor2 = Color.Green;
+                }
+                else if (station21.pbAktuatori.Value >= 7500000 && station21.pbAktuatori.Value < 17500000)
+                {
+                    station21.pbAktuatori.ProgressColor = Color.Yellow;
+                    station21.pbAktuatori.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station21.pbAktuatori.ProgressColor = Color.Red;
+                    station21.pbAktuatori.ProgressColor2 = Color.Red;
+                }
+
+                if(station21.pbAktuatori.Value < 7500000 && msgBoxFlag_stan2_cilindar == false)
+                {
+                    msgBoxFlag_stan2_cilindar = true;
+                    MessageBox.Show("Cilinar lifta je dostigao više od 70% predviđenog životnog veka!\nProveriti stanje cilindra.", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
                 //70 l/min nominalni protok vazduha - povuci parametre iz spoljnjeg fajla
                 TimeSpan lifeSpan_vakumStan1 = TimeSpan.Zero, lifeSpan_vakumStan2 = TimeSpan.Zero;
@@ -481,7 +563,28 @@ namespace GanttChart
                 station21.lblPotrosnjaVazduha.Text = potrosnja.ToString() + " l";
 
                 station21.pbVazduh.Maximum = 70 * 60 * 10000;
-                station21.pbVazduh.Value = lifeSpan_potrosnja;
+                station21.pbVazduh.Value = (70 * 60 * 10000) - lifeSpan_potrosnja;
+                if (station21.pbVazduh.Value >= (70 * 60 * 7000))
+                {
+                    station21.pbVazduh.ProgressColor = Color.Green;
+                    station21.pbVazduh.ProgressColor2 = Color.Green;
+                }
+                else if (station21.pbVazduh.Value >= (70 * 60 * 3000) && station21.pbVazduh.Value < (70 * 60 * 7000))
+                {
+                    station21.pbVazduh.ProgressColor = Color.Yellow;
+                    station21.pbVazduh.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station21.pbVazduh.ProgressColor = Color.Red;
+                    station21.pbVazduh.ProgressColor2 = Color.Red;
+                }
+
+                if(station21.pbVazduh.Value < (70 * 60 * 3000) && msgBoxFlag_stan2_vazduh == false)
+                {
+                    msgBoxFlag_stan2_vazduh = true;
+                    MessageBox.Show("Filter vazduha dostigao više od 70% predviđenih radnih sati.\n Preporučuen servis!", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else if (station31.Parent.Controls.GetChildIndex(station31) == 0)
             {
@@ -574,8 +677,28 @@ namespace GanttChart
                 }
 
                 station31.pbCilindarHvataljke.Maximum = 100000;
-                station31.pbCilindarHvataljke.Value = incoming[6].pList.Count + incoming[7].pList.Count;
+                station31.pbCilindarHvataljke.Value = 100000 - incoming[6].pList.Count + incoming[7].pList.Count;
+                if (station31.pbCilindarHvataljke.Value >= 70000)
+                {
+                    station31.pbCilindarHvataljke.ProgressColor = Color.Green;
+                    station31.pbCilindarHvataljke.ProgressColor2 = Color.Green;
+                }
+                else if (station31.pbCilindarHvataljke.Value >= 30000 && station31.pbCilindarHvataljke.Value < 70000)
+                {
+                    station31.pbCilindarHvataljke.ProgressColor = Color.Yellow;
+                    station31.pbCilindarHvataljke.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station31.pbCilindarHvataljke.ProgressColor = Color.Red;
+                    station31.pbCilindarHvataljke.ProgressColor2 = Color.Red;
+                }
 
+                if(station31.pbCilindarHvataljke.Value < 30000 && msgBoxFlag_stan3_cilindar == false)
+                {
+                    msgBoxFlag_stan3_cilindar = true;
+                    MessageBox.Show("Cilinar hvataljke je dostigao više od 70 % predviđenog životnog veka!\nProveriti stanje cilindra.", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else if (station41.Parent.Controls.GetChildIndex(station41) == 0)
             {
@@ -591,7 +714,7 @@ namespace GanttChart
                 {
                     for (int i = 0; i < incoming[1].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Switch 1 - uvucen", incoming[1].pList[i], incoming[1].eList[i], Color.Red, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Ručica 1 - uvučena", incoming[1].pList[i], incoming[1].eList[i], Color.Red, Color.Khaki, index4));
                     }
                     index4++;
                 }
@@ -599,7 +722,7 @@ namespace GanttChart
                 {
                     for (int i = 0; i < incoming[2].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Switch 1 - izvucen", incoming[2].pList[i], incoming[2].eList[i], Color.Blue, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Ručica 1 - izvučena", incoming[2].pList[i], incoming[2].eList[i], Color.Blue, Color.Khaki, index4));
                     }
                     index4++;
                 }
@@ -607,7 +730,7 @@ namespace GanttChart
                 {
                     for (int i = 0; i < incoming[3].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Switch 2 - uvucen", incoming[3].pList[i], incoming[3].eList[i], Color.YellowGreen, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Ručica 2 - uvučena", incoming[3].pList[i], incoming[3].eList[i], Color.YellowGreen, Color.Khaki, index4));
                     }
                     index4++;
                 }
@@ -615,7 +738,7 @@ namespace GanttChart
                 {
                     for (int i = 0; i < incoming[4].pList.Count; i++)
                     {
-                        lst1.Add(new BarInformation("Switch 2 - ispruzen", incoming[4].pList[i], incoming[4].eList[i], Color.MediumPurple, Color.Khaki, index4));
+                        lst1.Add(new BarInformation("Ručica 2 - izvučena", incoming[4].pList[i], incoming[4].eList[i], Color.MediumPurple, Color.Khaki, index4));
                     }
                     index4++;
                 }
@@ -665,18 +788,75 @@ namespace GanttChart
                     station41.lblRucica2.Text = "0 puta";
                 }
 
-                station41.pbCilindar1.Maximum = 100000;
-                station41.pbCilindar1.Value = incoming[5].pList.Count + incoming[6].pList.Count;
+                station41.pbCilindar1.Maximum = 25000000;
+                station41.pbCilindar1.Value = 25000000 - incoming[5].pList.Count + incoming[6].pList.Count;
+                if (station41.pbCilindar1.Value >= 17500000)
+                {
+                    station41.pbCilindar1.ProgressColor = Color.Green;
+                    station41.pbCilindar1.ProgressColor2 = Color.Green;
+                }
+                else if (station41.pbCilindar1.Value >= 7500000 && station41.pbCilindar1.Value < 17500000)
+                {
+                    station41.pbCilindar1.ProgressColor = Color.Yellow;
+                    station41.pbCilindar1.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station41.pbCilindar1.ProgressColor = Color.Red;
+                    station41.pbCilindar1.ProgressColor2 = Color.Red;
+                }
 
-                station41.pbCilindar2.Maximum = 100000;
-                station41.pbCilindar2.Value = incoming[7].pList.Count + incoming[8].pList.Count;
+                if(station41.pbCilindar1.Value < 7500000 && msgBoxFlag_stan4_cilindar1 == false)
+                {
+                    msgBoxFlag_stan4_cilindar1 = true;
+                    MessageBox.Show("Cilinar ručice 1 je dostigao više od 70 % predviđenog životnog veka!\nProveriti stanje cilindra.", "Upozorenje!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                station41.pbCilindar2.Maximum = 25000000;
+                station41.pbCilindar2.Value = 25000000 - incoming[7].pList.Count + incoming[8].pList.Count;
+                if (station41.pbCilindar2.Value >= 17500000)
+                {
+                    station41.pbCilindar2.ProgressColor = Color.Green;
+                    station41.pbCilindar2.ProgressColor2 = Color.Green;
+                }
+                else if (station41.pbCilindar2.Value >= 7500000 && station41.pbCilindar2.Value < 17500000)
+                {
+                    station41.pbCilindar2.ProgressColor = Color.Yellow;
+                    station41.pbCilindar2.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station41.pbCilindar2.ProgressColor = Color.Red;
+                    station41.pbCilindar2.ProgressColor2 = Color.Red;
+                }
+
+                if(station41.pbCilindar2.Value < 7500000 && msgBoxFlag_stan4_cilindar2 == false)
+                {
+                    msgBoxFlag_stan4_cilindar2 = true;
+                    MessageBox.Show("Cilinar ručice 2 je dostigao više od 70% predviđenog životnog veka!\nProveriti stanje cilindra.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
                 //Efektivnost
                 double ispravni = incoming[9].pList.Count + incoming[10].pList.Count;
                 double skart = incoming[11].pList.Count;
                 double efektivnost = (ispravni / (ispravni + skart)) * 100;
                 station41.gaugeEfektivnost.Value = (int)efektivnost;
-                
+                if (efektivnost >= 70.0)
+                {
+                    station41.gaugeEfektivnost.ProgressColor = Color.Green;
+                    station41.gaugeEfektivnost.ProgressColor2 = Color.Green;
+                }
+                else if (efektivnost >= 30.0 && efektivnost < 70.0)
+                {
+                    station41.gaugeEfektivnost.ProgressColor = Color.Yellow;
+                    station41.gaugeEfektivnost.ProgressColor2 = Color.Yellow;
+                }
+                else
+                {
+                    station41.gaugeEfektivnost.ProgressColor = Color.Red;
+                    station41.gaugeEfektivnost.ProgressColor2 = Color.Red;
+                }
+
             }
 
             foreach (BarInformation bar in lst1)
